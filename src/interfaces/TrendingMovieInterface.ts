@@ -1,4 +1,4 @@
-interface Movie {
+interface TrendingMovieInterface {
     adult: boolean;
     backdrop_path: string;
     genre_ids: number[];
@@ -16,4 +16,4 @@ interface Movie {
     vote_count: number;
 }
 
-export default Movie
+export default TrendingMovieInterface

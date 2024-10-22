@@ -13,7 +13,7 @@ import Contact from './components/other/Contact';
 import Projects from './components/projects/Projects';
 import Web from './components/projects/Web';
 import Mobile from './components/projects/Mobile';
-import Movies from './components/movies/Movies';
+import Movies from './components/Media/Movies';
 
 
 function App() {
@@ -65,7 +65,7 @@ function App() {
             <Route path='mobile' element={<Mobile />} />
           </Route>
 
-          <Route path='movies' element={<Movies/>}/>
+          <Route path='movies' element={<Movies/>}></Route>
 
           {/*Rest of links*/}
           <Route path='*' element={<NotFound />} />

@@ -1,10 +1,10 @@
-import Movie from '../../interfaces/Movie'
+import TrendingMovieInterface from '../../interfaces/TrendingMovieInterface';
 
 interface MovieProps {
-    movie: Movie
+    movie: TrendingMovieInterface
 }
 
-export default function MovieCard({ movie }: MovieProps) {
+export default function TrendingMovieCard({ movie }: MovieProps) {
     return (
         <div className="movie-card">
             <img
@@ -13,7 +13,7 @@ export default function MovieCard({ movie }: MovieProps) {
                 alt={movie.title}
             />
             <div className="movie-info">
-                <h5>{ movie.title === null ? "Not exists" : `${movie.title || movie.original_title}`}</h5>
+                <h5>{ movie.title === null ? "Not exists" : `${movie.title}`}</h5>
                 <p>{movie.overview}</p>
             </div>
         </div>
