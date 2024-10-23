@@ -234,7 +234,7 @@ input[type="checkbox"] {
   transition: transform 0.3s ease;
 }
 
-.movie-card:hover{
+.movie-card:hover {
   transform: scale(1.05);
 }
 
@@ -263,15 +263,23 @@ input[type="checkbox"] {
 
 .spinner {
   border: 8px solid rgba(0, 0, 0, 0.1);
-  border-left-color: #000; /* Change this to your desired color */
+  border-left-color: #000;
+  /* Change this to your desired color */
   border-radius: 50%;
-  width: 50px; /* Size of the spinner */
+  width: 50px;
+  /* Size of the spinner */
   height: 50px;
   animation: spin 1s linear infinite;
-  margin: 20px auto; /* Center it */
+  margin: 20px auto;
+  /* Center it */
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }

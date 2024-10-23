@@ -13,8 +13,11 @@ import Contact from './components/other/Contact';
 import Projects from './components/projects/Projects';
 import Web from './components/projects/Web';
 import Mobile from './components/projects/Mobile';
-import Movies from './components/Media/Movies';
 import MoviesContextProvider from './Store';
+import Media from './components/Media/Media';
+import Movies from './components/Media/Movies';
+import Tv from './components/Media/Tv';
+import People from './components/Media/People';
 
 
 function App() {
@@ -48,7 +51,7 @@ function App() {
         <div className='main-content'>
           <Routes>
 
-            {/* Main route for Far away page*/}
+            {/* Main route for Faraway page*/}
             <Route path='/' element={
               <>
                 <Logo />
@@ -67,7 +70,13 @@ function App() {
               <Route path='mobile' element={<Mobile />} />
             </Route>
 
-            <Route path='movies' element={<Movies />}></Route>
+            <Route path='media' element={<Media />}>
+              {/* Make Movies component as default when I open media */}
+              <Route index element={<Movies />} />
+              <Route path='movies' element={<Movies />} />
+              <Route path='tv' element={<Tv />} />
+              <Route path='people' element={<People />} />
+            </Route>
 
             {/*Rest of links*/}
             <Route path='*' element={<NotFound />} />

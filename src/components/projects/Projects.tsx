@@ -7,10 +7,12 @@ export default function Projects() {
                 <div className='col-md-1'>
                     <ul>
                         <li>
-                            <Link to='web'>Web</Link>
-                        </li>
-                        <li>
-                            <Link to='mobile'>Mobile</Link>
+                            <button>
+                                <Link to='web'>Web</Link>
+                            </button>
+                            <button>
+                                <Link to='mobile'>Mobile</Link>
+                            </button>
                         </li>
                     </ul>
                 </div>
@@ -20,7 +22,7 @@ export default function Projects() {
                     <Outlet></Outlet>
                 </div>
 
-                <div className='col-md-2' style={{textAlign:'center' , marginTop:'200px'}}>
+                <div className='col-md-2' style={{ textAlign: 'center', marginTop: '200px' }}>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, est? Ex, quis error ab labore voluptas quasi tenetur sequi quo dicta ipsum nam beatae iure cupiditate cumque reprehenderit obcaecati itaque.</p>
                 </div>
             </div>
