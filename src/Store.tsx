@@ -1,5 +1,5 @@
 import Axios from "axios";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState , ReactNode} from "react";
 import TrendingMovieInterface from "./interfaces/TrendingMovieInterface";
 import TrendingPersonInterface from "./interfaces/TrendingPersonInterface";
 import TrendingTvInterface from "./interfaces/TrendingTvInterface";
@@ -7,7 +7,7 @@ import MediaInterface from "./interfaces/MediaInterface";
 
 export const moviesContext = createContext<MediaInterface | null>(null);
 
-export default function MoviesContextProvider(props: any) {
+export default function MoviesContextProvider({children} : {children : ReactNode}) {
     const apiKey = "1fa432ee18877d5a1dbb6bea9c6c4df5"
 
 
@@ -34,6 +34,6 @@ export default function MoviesContextProvider(props: any) {
     }, [])
 
     return <moviesContext.Provider value={{ trendingMovies, trendingPeople, trendingTv }}>
-        {props.children}
+        {children}
     </moviesContext.Provider>
 }
