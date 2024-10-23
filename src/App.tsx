@@ -14,6 +14,7 @@ import Projects from './components/projects/Projects';
 import Web from './components/projects/Web';
 import Mobile from './components/projects/Mobile';
 import Movies from './components/Media/Movies';
+import MoviesContextProvider from './Store';
 
 
 function App() {
@@ -42,36 +43,38 @@ function App() {
 
   return (
     <div className="app">
-      <NavBar />
-      <div className='main-content'>
-        <Routes>
+      <MoviesContextProvider>
+        <NavBar />
+        <div className='main-content'>
+          <Routes>
 
-          {/* Main route for Far away page*/}
-          <Route path='/' element={
-            <>
-              <Logo />
-              <Form onAddItems={handleAddItems} />
-              <PackingList items={items} ondeleteItem={handleDeleteItem} onCheckItem={handleChecked} onClear={handleClearList} />
-              <Stats items={items} />
-            </>
-          } />
+            {/* Main route for Far away page*/}
+            <Route path='/' element={
+              <>
+                <Logo />
+                <Form onAddItems={handleAddItems} />
+                <PackingList items={items} ondeleteItem={handleDeleteItem} onCheckItem={handleChecked} onClear={handleClearList} />
+                <Stats items={items} />
+              </>
+            } />
 
-          <Route path='about' element={<About />} />
-          <Route path='contact' element={<Contact />} />
+            <Route path='about' element={<About />} />
+            <Route path='contact' element={<Contact />} />
 
-          {/* Nested pages of projects*/}
-          <Route path='projects' element={<Projects />}>
-            <Route path='web' element={<Web />} />
-            <Route path='mobile' element={<Mobile />} />
-          </Route>
+            {/* Nested pages of projects*/}
+            <Route path='projects' element={<Projects />}>
+              <Route path='web' element={<Web />} />
+              <Route path='mobile' element={<Mobile />} />
+            </Route>
 
-          <Route path='movies' element={<Movies/>}></Route>
+            <Route path='movies' element={<Movies />}></Route>
 
-          {/*Rest of links*/}
-          <Route path='*' element={<NotFound />} />
+            {/*Rest of links*/}
+            <Route path='*' element={<NotFound />} />
 
-        </Routes>
-      </div>
+          </Routes>
+        </div>
+      </MoviesContextProvider>
     </div>
   );
 }

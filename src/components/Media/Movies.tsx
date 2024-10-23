@@ -1,38 +1,20 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
 import TrendingMovieCard from "./TrendingMovieCard";
 import TrendingPeopleCard from "./TrendingPeopleCard";
-import TrendingMovieInterface from "../../interfaces/TrendingMovieInterface";
-import TrendingPersonInterface from "../../interfaces/TrendingPersonInterface";
 import { Outlet } from "react-router-dom";
-import TrendingTvInterface from "../../interfaces/TrendingTvInterface";
-import Axios from "axios";
 import TrendingTvCard from "./TrendingTvCard";
+import { moviesContext } from "../../Store";
 
 export default function Movies() {
-    const apiKey = "1fa432ee18877d5a1dbb6bea9c6c4df5"
+    const media = useContext(moviesContext)
 
-
-    const [trendingMovies, setTrendingMovies] = useState<TrendingMovieInterface[]>([]);
-    const [trendingPeople, setTrendingPeople] = useState<TrendingPersonInterface[]>([]);
-    const [trendingTv, setTrendingTv] = useState<TrendingTvInterface[]>([]);
-
-    async function getMedia(mediaType: string, callback: Function) {
-        try {
-            let { data } = await Axios.get(`https://api.themoviedb.org/3/trending/${mediaType}/day?language=en-US&api_key=${apiKey}`)
-            callback(data.results)
-            console.log(data.results);
-        } catch (error) {
-            console.error("Error fetching movies:", error);
-        }
+    if (!media) {
+        return <div>Unable to fetch data</div>;
     }
+    const trendingMovies = media.trendingMovies
+    const trendingTv = media.trendingTv
+    const trendingPeople = media.trendingPeople
 
-    //Fetching data in mount
-    useEffect(() => {
-        getMedia('movie', setTrendingMovies)
-        getMedia('person', setTrendingPeople)
-        getMedia('tv', setTrendingTv)
-        console.log('Comonent did mount');
-    }, [])
 
     return (
         <div className="movies-container">
@@ -53,8 +35,8 @@ export default function Movies() {
 
             <div className="movies-grid">
                 {
-                    trendingMovies.length > 0 ?
-                        (trendingTv.map((tv , i) => (
+                    trendingTv.length > 0 ?
+                        (trendingTv.map((tv, i) => (
                             <TrendingTvCard key={i} tv={tv} />)))
                         :
                         (<div className="spinner"></div>)
